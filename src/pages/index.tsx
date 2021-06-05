@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next';
-
+import NextLink from 'next/link';
+import Header from '../components/Header';
+import { FiCalendar, FiUser } from 'react-icons/fi'
 import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
@@ -24,13 +26,57 @@ interface HomeProps {
   postsPagination: PostPagination;
 }
 
-// export default function Home() {
-//   // TODO
-// }
+export default function Home() {
+  return (
+    <>
+    <main className={commonStyles.container}>
+      <Header />
+
+      <div className={styles.posts}>
+        <NextLink href='/'>
+          <a className={styles.post}>
+            <strong>Title</strong>
+            <p>exerpt</p>
+            <ul>
+              <li>
+                <FiCalendar />
+                Date
+              </li>
+              <li>
+                <FiUser />
+                Name user
+              </li>
+            </ul>
+          </a>
+        </NextLink>
+
+        <NextLink href='/'>
+          <a className={styles.post}>
+            <strong>Title</strong>
+            <p>exerpt</p>
+            <ul>
+              <li>
+                <FiCalendar />
+                Date
+              </li>
+              <li>
+                <FiUser />
+                Name user
+              </li>
+            </ul>
+          </a>
+        </NextLink>
+        <button type='button'>
+          load more posts...
+        </button>
+      </div>
+    </main>
+    </>
+  )
+}
 
 // export const getStaticProps = async () => {
-//   // const prismic = getPrismicClient();
-//   // const postsResponse = await prismic.query(TODO);
+//   const prismic = getPrismicClient();
+//   const postsResponse = await prismic.query(TODO);
 
-//   // TODO
 // };
