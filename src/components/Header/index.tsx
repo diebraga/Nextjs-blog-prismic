@@ -1,17 +1,17 @@
-import NextLink from 'next/link';
+import Link from 'next/link';
 import styles from './header.module.scss';
 
 export default function Header() {
   return (
     <header className={styles.header}>
-      <NextLink href='/'>
+      <Link href='/'>
         <a>
           <img 
             src='/images/logo.svg' 
-            alt='img logo'
+            alt='logo'
           />
         </a>
-      </NextLink>
+      </Link>
     </header>
   )
 }
