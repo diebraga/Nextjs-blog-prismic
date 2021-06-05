@@ -49,7 +49,7 @@ export default function Home({ postsPagination, preview, }: HomeProps) {
     };
   });
 
-    const [posts, setPosts] = useState<Post[]>(formattedPost);
+  const [posts, setPosts] = useState<Post[]>(formattedPost);
 
   async function handleNextPage(): Promise<void> {
     if (currentPage !== 1 && nextPage === null) {
@@ -93,19 +93,19 @@ export default function Home({ postsPagination, preview, }: HomeProps) {
         <Header />
 
         <div className={styles.posts}>
-          {posts.map(item => (
-            <Link href={`/post/${item.uid}`} key={item.uid}>
-              <a className={styles.item}>
-                <strong>{item.data.title}</strong>
-                <p>{item.data.subtitle}</p>
+          {posts.map(post => (
+            <Link href={`/post/${post.uid}`} key={post.uid}>
+              <a className={styles.post}>
+                <strong>{post.data.title}</strong>
+                <p>{post.data.subtitle}</p>
                 <ul>
                   <li>
                     <FiCalendar />
-                    {item.first_publication_date}
+                    {post.first_publication_date}
                   </li>
                   <li>
                     <FiUser />
-                    {item.data.author}
+                    {post.data.author}
                   </li>
                 </ul>
               </a>
@@ -114,7 +114,7 @@ export default function Home({ postsPagination, preview, }: HomeProps) {
 
           {nextPage && (
             <button type="button" onClick={handleNextPage}>
-              Carregar mais posts
+              load more posts
             </button>
           )}
         </div>
@@ -122,7 +122,7 @@ export default function Home({ postsPagination, preview, }: HomeProps) {
         {preview && (
           <aside>
             <Link href="/api/exit-preview">
-              <a className={commonStyles.preview}>Sair do modo Preview</a>
+              <a className={commonStyles.preview}>Close Preview</a>
             </Link>
           </aside>
         )}
